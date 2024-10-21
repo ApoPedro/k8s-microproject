@@ -4,7 +4,7 @@ metadata:
   name: k8s-microproject-ingress
 spec:
   rules:
-  - host: k8s-deployment
+  - host: k8s.dev.com
     http:
       paths:
       - path: /
