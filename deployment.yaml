@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-microproject-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-microproject-deployment
+  template:
+    metadata:
+      name: k8s-microproject-deployment
+      labels:
+        app: k8s-microproject-deployment
+    spec:
+      containers:
+        - name: k8s-microproject-deployment
+          image: pedrobesse/k8s-microproject
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
